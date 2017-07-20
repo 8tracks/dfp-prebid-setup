@@ -4,12 +4,12 @@ dfp:
   #############################################################################
   # Required Fields                                                           #
   #############################################################################
-  application_name: INSERT_APPLICATION_NAME_HERE
+  application_name: DFP Prebid Setup
   #############################################################################
   # Optional Fields                                                           #
   #############################################################################
   # The network_code is required for all services except NetworkService:
-  network_code: INSERT_NETWORK_CODE_HERE
+  network_code: 3322514
   #############################################################################
   # OAuth2 Configuration                                                      #
   # Below you may provide credentials for either the installed application or #
@@ -17,5 +17,5 @@ dfp:
   # not using.                                                                #
   #############################################################################
   # The following values configure the client for the service account flow.
-  service_account_email: INSERT_SERVICE_ACCOUNT_EMAIL_HERE
+  service_account_email: dfp-prebid-setup@api-project-191546844239.iam.gserviceaccount.com
   path_to_private_key_file: ./key.pem
