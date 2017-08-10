@@ -21,6 +21,7 @@ def create_line_items(line_items):
   created_line_item_ids = []
   for line_item in line_items:
     created_line_item_ids.append(line_item['id'])
+
   return created_line_item_ids
 
 def create_line_item_config(name, order_id, placement_ids, cpm_micro_amount,

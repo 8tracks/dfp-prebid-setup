@@ -13,7 +13,9 @@ import dfp.associate_line_items_and_creatives
 import dfp.create_custom_targeting
 import dfp.create_creatives
 import dfp.create_line_items
+import dfp.activate_line_items
 import dfp.create_orders
+import dfp.approve_order
 import dfp.get_advertisers
 import dfp.get_custom_targeting
 import dfp.get_placements
@@ -60,6 +62,8 @@ def setup_partner(user_email, advertiser_name, order_name, placements,
 
   # Create the order.
   order_id = dfp.create_orders.create_order(order_name, advertiser_id, user_id)
+  
+  dfp.approve_order.approve_order(order_id)
 
   # Create creatives.
   creative_configs = dfp.create_creatives.create_duplicate_creative_configs(
@@ -80,10 +84,13 @@ def setup_partner(user_email, advertiser_name, order_name, placements,
     currency_code, HBBidderValueGetter, HBPBValueGetter)
   logger.info("Creating line items...")
   line_item_ids = dfp.create_line_items.create_line_items(line_items_config)
-
+  
   # Associate creatives with line items.
   dfp.associate_line_items_and_creatives.make_licas(line_item_ids,
     creative_ids, size_overrides=sizes)
+
+  logger.info("Activating line items...")
+  dfp.activate_line_items.activate_line_items(line_item_ids)
 
   logger.info("""
 

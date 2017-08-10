@@ -16,6 +16,7 @@ from dfp.exceptions import (
 logger = logging.getLogger(__name__)
 
 def create_advertiser(name):
+  statement = dfp.FilterStatement()
   """
   Creates a DFP advertiser with name `name` and returns its ID.
 
